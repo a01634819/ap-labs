@@ -61,11 +61,20 @@ func (path Path) Distance() float64 {
 	return sum
 }
 
-
-
 func main() {
 
+	if len(os.Args) != 2 {
+		fmt.Println("Error")
+		return
+	}
+
 	edges, _ := strconv.Atoi(os.Args[1])
+
+	if edges < 3 {
+		fmt.Println("Error")
+		return
+	}
+
 	x := Path{}
 	for i := 0; i < edges; i++ {
 		random := rand.NewSource(time.Now().UnixNano())
@@ -111,7 +120,6 @@ func doIntersect(p1, q1, p2, q2 Point) bool{
     if (o4 == 0 && onSegment(p2, q1, q2)) {
 		 return true;
 	}
-
     return false; 
 }
 
